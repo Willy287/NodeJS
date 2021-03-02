@@ -2,7 +2,7 @@
 utilizar diferentes herramientas de los proveedores de la nube para realizar despliegues en diferentes ambientes,
 pruebas, planificación, ajustes. Todo esto de forma automatizada.
 
-Ideas para generar más empatia y Confianza en el equipo:
+2. Ideas para generar más empatia y Confianza en el equipo:
 
 -Hablar sobre los inconvenientes o percances que cada integrante del equipo ha tenido y entre todos proponer una solución.
 -Realizar pequeñas actividades ludicas que no tomen más de unos minutos para romper el hielo en el equipo.
@@ -10,3 +10,21 @@ Ideas para generar más empatia y Confianza en el equipo:
 Ideas para generar seguridad psicologica en el equipo:
 
 -Realizar sesiones de 5 minutos al finalizar la capacitación para que cada integrante del equipo mencione sus dudas o comentarios.
+
+3. 
+
+a. Herramientas que podrían compartir con los demás departamentos para una mejor colaboración:
+
+-Trello
+-Slack
+-Planner
+-Tableros de Planificación de actividades de azure
+
+b. Pienso que las empresas deben contar con una estructura organizacional horizontal en vez de una vertical, esto debido a que
+la estructura horizontal permite a los empleados contar con herramientas clave para la toma de decisiones sin importar su nivel
+de jerarquia. 
+
+c. Mecanismo para la toma de decisiones:
+
+-LLuvia de ideas o "brainstorming"
+-Design Thinking
