@@ -1,3 +1,15 @@
+/*
+Lo que no conozco:
+No conozco mucho de promesas ni funciones flechas
+No entiendo la diferencia entre un for await y un for normal*
+Lo que conozco:
+Inicializar variables
+Declarar clases
+*/
+
+/*
+Claase que hereda de la clase Map
+*/
 class DefaultMap extends Map{
 
     constructor(defaultValue){
@@ -20,7 +32,6 @@ class Histograma{
         this.letterCounts = new DefaultMap(0);
         this.totalLetters  = 0;
     }
-
     add(text){
         text=text.replace(/\s/g,"").toUpperCase();
         for(let character of text){
