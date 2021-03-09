@@ -42,6 +42,7 @@ class Histograma{
             entri[1] = (entri[1]/this.totalLetters) * 100 ;
         }
         entries=entries.filter(entri=>entri[1]>=1);
+		/*No entiendo esta linea de codigo*/
         let lines = entries.map( ([l,n]) => `Letra  ${l} : ${"#".repeat(Math.round(n))} ${n.toFixed(2)}%`);
         return lines.join("\n");
     }
@@ -50,6 +51,7 @@ class Histograma{
 async function histogramFromStdin(){
     process.stdin.setEncoding("utf-8");
     let probar  = new Histograma();
+	/*No entiendo la diferencia con un for normal*/
     for await( let chunk of  process.stdin){
         probar.add(chunk);
     }
