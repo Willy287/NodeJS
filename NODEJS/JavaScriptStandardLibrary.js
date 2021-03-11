@@ -333,12 +333,178 @@ console.log(`path: ${path}`);
 console.log(text2.match(url).index);
 console.log(text2.match(url).input);
 
+
+/**
+ * Method Split: Este metodo divide la cadena en una matriz utilizando como argumento un separador.
+ * */
+console.log("1,2,3".split(","));
+console.log("1, 2, 3, \n4, 5".split(/\s*,\s*/));
+
+const htmlTag = /<([^>]+)>/;  // < followed by one or more non->, followed by >
+"Testing<br/>1,2,3".split(htmlTag); // => ["Testing", "br/", "1,2,3"]
+console.log("Testing<br/>1,2,3".split(htmlTag));
+
 //Exercise Regular Expressions
 
 let matchExercise = /[aeiou]+/gi;
-let world = "Hola";
+let world = "Hola Mundo";
 
 console.log(world.match(matchExercise));
+
+/**
+ * 
+ * Exercises Regular Expressions
+ * */
+
+//Cualquier carácter entre la B mayúscula y la Z mayúscula, excepto las vocales
+let regExp = /[B-D]|[F-H]|[J-N]|[P-T]|[V-Z]+/gi;
+let world1 = "ABCDLHJIO";
+console.log(world1.match(regExp));
+
+/**
+ *  A veces nos intersa no sólo saber si una cadena cumple un determinado patrón, 
+    sino extraer determinadas partes de él. Por ejemplo, si una fecha está en el 
+    formato "27/11/2012" puede interesarnos extraer los números. 
+    Una expresión regular que vale para esta cadena puede ser
+ * 
+ *  */ 
+ let regExp1 = /(\d{1,2})\/(\d{1,2})\/(\d{4})/;
+ let world2 = "27/11/2012";
+ console.log(world2.match(regExp1));
+ 
+
+/**
+ * Escoger un algoritmo excepto El algoritmo de la Criba de Eratóstenes y utilizar los typed arrays en javascript.
+ * 
+ */
+ function Euclid_gcd(a, b) {
+    a = +a;
+    b = +b;
+    if (a !== a || b !== b) {
+      return [NaN, NaN, NaN];
+    }
+    
+    if (a === Infinity || a === -Infinity || b === Infinity || b === -Infinity) {
+      return [Infinity, Infinity, Infinity];
+    }
+    // Checks if a or b are decimals
+    if ((a % 1 !== 0) || (b % 1 !== 0)) {
+      return false;
+    }
+    var signX = (a < 0) ? -1 : 1,
+      signY = (b < 0) ? -1 : 1,
+      x = 0,
+      y = 1,
+      u = 1,
+      v = 0,
+      q, r, m, n;
+    a = Math.abs(a);
+    b = Math.abs(b);
+  
+    while (a !== 0) {
+      q = Math.floor(b / a);
+      r = b % a;
+      m = x - u * q;
+      n = y - v * q;
+      b = a;
+      a = r;
+      x = u;
+      y = v;
+      u = m;
+      v = n;
+    }
+    return [b, signX * x, signY * y];
+  }
+  
+  console.log(Euclid_gcd(150, 39));
+
+
+/**
+ * Programe una expresión regular que de este texto  "'hola tu' tururú" obtenga ["'hola tu'", "'"]
+ * 
+ */
+let regExp2 = /(["']).*\1/;
+let text3 = "'hola tu' tururú";
+console.log(text3.match(regExp2));
+
+/**
+ * - Programe una expresión regular que de este texto   "papa" tururú" obtenga ["papa", "pa"]
+ */
+let regExp3 = /(pa){2}/;
+let text4 = "papa tururú";
+console.log(text4.match(regExp3));
+
+/**
+ * Programe una expresión regular que de este texto  "java es güay" obtenga ["java"]
+ * 
+ */
+let regExp4 = /\bjava\b/;
+let text5 = "java es güay";
+console.log(text5.match(regExp4));
+
+/**
+ * Programe una expresión regular que de este texto  "11 millas 10 km" obtenga ["10"]
+ * 
+ */
+let regExp5 = /\d+(?= km)/;
+let text6 = "11 millas 10 km";
+console.log(text6.match(regExp5));
+
+/**
+ * Programe una expresión regular que de este texto  "11 millas 10 km" obtenga ["10 km"]
+ * 
+ */
+let regExp6 = /\d+ km/;
+let text7 = "11 millas 10 km";
+console.log(text7.match(regExp6));
+
+/**
+ * Programe una expresión regular que de este texto   "11.22" obtenga [".22"]
+ * 
+ */
+let regExp7 = /(?=\.)\.\d+/;
+let text8 = "11.22";
+console.log(text8.match(regExp7));
+
+/**
+ * Programe una expresión regular que de este texto    "11 km 12 km 14 m" obtenga ["14"]
+ * 
+ */
+let regExp8 = /\d{2}(?! km)/;
+let text9 = "11 km 12 km 14 m";
+console.log(text9.match((regExp8)));
+
+/**
+ * ¿Porque devuelve null  "hola".match(/HOLA/) y como arreglarlo para que devuelva ["hola"]?
+ * 
+ */
+console.log("hola".match(/HOLA/)); // Devuelve null porque debemos indicarle que la coincidencia no debe distinguir entre mayusculas o minusculas, para que funcione 
+                                  // se debe adicionar el flag i
+console.log("hola".match(/HOLA/i));
+
+/**
+ * Programe una expresión regular que de este texto  "hola\ntu" obtenga ["tu"]
+ * 
+ */
+let regExp9 = /^tu/m;
+let text10 = "hola\ntu";
+console.log(text10.match(regExp9));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
