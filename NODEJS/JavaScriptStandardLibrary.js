@@ -347,7 +347,7 @@ console.log("Testing<br/>1,2,3".split(htmlTag));
 //Exercise Regular Expressions
 
 let matchExercise = /[aeiou]+/gi;
-let world = "Hola Mundo";
+let world = "Hola";
 
 console.log(world.match(matchExercise));
 
@@ -357,8 +357,8 @@ console.log(world.match(matchExercise));
  * */
 
 //Cualquier carácter entre la B mayúscula y la Z mayúscula, excepto las vocales
-let regExp = /[B-D]|[F-H]|[J-N]|[P-T]|[V-Z]+/gi;
-let world1 = "ABCDLHJIO";
+let regExp = /[B-D]|[F-H]|[J-N]|[P-T]|[V-Z]+/g;
+let world1 = "ABCDLHJIOP";
 console.log(world1.match(regExp));
 
 /**
@@ -438,7 +438,7 @@ console.log(text4.match(regExp3));
  * Programe una expresión regular que de este texto  "java es güay" obtenga ["java"]
  * 
  */
-let regExp4 = /\bjava\b/;
+let regExp4 = /\java\b/;
 let text5 = "java es güay";
 console.log(text5.match(regExp4));
 
@@ -489,3 +489,165 @@ console.log("hola".match(/HOLA/i));
 let regExp9 = /^tu/m;
 let text10 = "hola\ntu";
 console.log(text10.match(regExp9));
+
+/**
+ *DATES AND TIMES:   
+ * La clase date es la api de javascript para trabajar con fechas y horas
+ * 
+ */
+let now = new Date(); // Toma la fecha de la maquina local
+console.log(now);
+
+let epoch = new Date(0); // Toma el numero de milisegundos desde 1970
+console.log(epoch);
+
+let century = new Date(2100, //Año 2100
+    0, //enero
+    1, //primero del mes 
+    2,3,4); //02:03:04.005 hora local
+console.log(century);
+
+let century2 = new Date(2100, //Año 2100
+    0, //enero
+    1 //primero del mes 
+); //Deja las horas en 0, media noche
+console.log(century2);
+
+/**
+ * UTC-Tiempo Universal Coordinado: Es el principal estandar de tiempo por medio del cual el mundo regula los relojes
+ * 
+ *  */ 
+let century3 = Date.UTC(2100,0,1); // Marca de tiempo en milisegundos
+console.log(century3);
+
+let century4 = new Date(Date.UTC(2100,0,1)); // Convierte los milisegundos en una fecha normal
+console.log(century4);
+
+console.log(now.getDate());
+console.log(now.getDay());
+console.log(now.getFullYear());
+console.log(now.getHours());
+console.log(now.getMilliseconds());
+console.log(now.getMinutes());
+console.log(now.getMonth());
+console.log(now.getSeconds());
+console.log(now.getTime());
+console.log(now.getTimezoneOffset());
+
+//Metodos GetUTC
+console.log(now.getUTCDate());
+console.log(now.getUTCDay());
+console.log(now.getUTCFullYear());
+console.log(now.getUTCHours());
+console.log(now.getUTCMilliseconds());
+console.log(now.getUTCMinutes());
+console.log(now.getUTCMonth());
+console.log(now.getUTCSeconds());
+
+//Usar UTC como estandar
+console.log(now.getUTCDate());
+console.log(now.getUTCDay());
+console.log(now.getUTCFullYear());
+console.log(now.getUTCHours());
+console.log(now.getUTCMilliseconds());
+console.log(now.getUTCMinutes());
+console.log(now.getUTCMonth());
+console.log(now.getUTCSeconds());
+
+// Metodos set de UTC
+console.log(now.setUTCDate(20/02/20202));
+console.log(now.setUTCFullYear(2030));
+console.log(now.setUTCHours(12));
+console.log(now.setUTCMilliseconds(230));
+console.log(now.setUTCMinutes(50));
+console.log(now.setUTCMonth(5));
+console.log(now.setUTCSeconds(10));
+
+//Numero de enteros que permite javascript en milisegundos: 8640.000.000.000.000 de milisegundos. Esto equivale a 270.000 años
+console.log(now.setTime(now.getTime()+30000));
+
+let startTime = Date.now();
+
+let endTime = Date.now();
+console.log(`tiempo de ejecuciòn: ${endTime-startTime}`);
+
+/**
+ * Formateo de fechas, convertir los objetos de fecha en cadenas
+ * 
+ */
+let dateText = now.toString();
+console.log(dateText);
+
+let dateTextUTC = now.toUTCString();
+console.log(dateTextUTC);
+
+/**
+ * toIsoString: Transforma la fecha a un formato ISO en texto. 
+ * T => Separa la fecha de la salida de la hora
+ * Z => Especifica la hora local
+ */
+let dateISOText = now.toISOString();
+console.log(dateISOText); // Este formato imprime año-mes-dia hora:minutos:segundos.ms(milisegundos)
+
+let dateUTC = Date.UTC(2021,3,2);
+console.log(dateUTC);
+
+// Hora en texto local
+console.log(now.toLocaleString());
+
+// Omite la hora
+console.log(now.toDateString());
+
+console.log(now.toLocaleDateString());
+console.log(now.toTimeString());
+console.log(now.toLocaleTimeString());
+
+// Transformaciòn de cadenas a fechas
+
+let dateTransform = Date.parse('2012/06/23');
+console.log(dateTransform);
+
+/**
+ * Ejercicio utilizando fechas:
+ * Dados tres valores (año, mes y dia), convertir esta informaciòn en una fecha y posteriormente converir esta fecha en formato UTC y formato ISO
+ * 
+ */
+let year = 1992;
+let month = 06;
+let day = 04;
+
+let dateBirth = new Date(year,month,day);
+console.log("Fecha normal: " + dateBirth);
+console.log("Fecha ISO: " + dateBirth.toISOString());
+console.log("Fecha UTC: " + dateBirth.toUTCString());
+
+//Imprima año , mes y dia a partir de esta fecha
+console.log("Anio : " + dateBirth.getFullYear());
+console.log("Mes : " + dateBirth.getMonth());
+console.log("Dia : " + dateBirth.getDay());
+
+// Convertir ahora la fecha en formato UTC e imprimir por pantalla
+let dateUTC1 = Date.UTC(1992,07,04,0 , 0, 0, 0);
+console.log("Fecha UTC: " + dateUTC1);
+
+//Calcular los dias transcurridos entre su fecha de nacimiento y la fecha actual
+let dateActual = new Date();
+console.log("Fecha Actual: " + dateActual.toLocaleDateString());
+
+let milisecondsDay = 24 * 60 * 60 * 1000;
+console.log("Miliseconds for Day: " + milisecondsDay);
+let milisecondsElapsed = Math.abs(dateBirth- dateActual);
+console.log("Diference in miliseconds: " + milisecondsElapsed);
+let daysElapsed = Math.round(milisecondsElapsed / milisecondsDay);
+console.log("Days Elapsed: " + daysElapsed);
+
+//Por ultimo calcule su edad a partir de las dos fechas dadas e imprima esta informaciòn en dias, horas, minutos y milisegundos
+
+let yearsWilmer = dateActual.getFullYear() - dateBirth.getFullYear();
+//Esta operaciòn se realiza para detectar si la persona aùn no ha cumplido un año o es un bebe, de tal manera que si la persona nacio en esta año 
+//la edad es 0
+dateBirth.setFullYear(dateActual.getFullYear());
+if(dateActual < dateBirth){
+    --yearsWilmer;
+}
+console.log("Years Wilmer: " + yearsWilmer);
