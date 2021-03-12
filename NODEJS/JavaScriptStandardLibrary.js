@@ -788,3 +788,29 @@ try {
     console.error(error1.stack);
 }
 
+/**
+ * Serializaciones:
+ * Cuando se va a transmitir datos a traves de la red, necesitamos convertir estructuras de datos en cadenas y para esto necesitamos serializar.
+ * La mejor forma para serializar estructuras de datos es utilizar JSON
+ * ¿Que admite JSON? cadenas, numeros primitivos(enteros, double, float...), matrices y objetos javascript
+ * ¿Que no admite? Maps, Sets, objetos de tipo RegExp(regular expression), typed arrays y dates
+ * Funciones para serializar y deserializar:
+ * JSON.stringify(); Esta funciòn nos permite serializar
+ * JSON.parse(); Esta funciòn nos permite deserializar
+ */
+
+let object = {s:"",n:0,a:[true,false,null]};
+let serialization = JSON.stringify(object);
+let deserialization = JSON.parseInt(serialization);
+console.log("Objeto serializado: " + serialization);
+console.log("Objeto deserializado" + deserialization);
+
+ console.log(JSON.stringify(object,null,2)); // recomendado 2 espacios de sangria
+ console.log(JSON.parse(JSON.stringify(object,null,2))); // El metodo parse ignora los espacios (sangria) que se le asignan en string
+
+ /**
+*Api de internacionalización: nos permite formatear numeros, que se muestren como formato de moneda, formato de porcentajes
+, ect
+*/
+let euro = Intl.NumberFormat("es",{style:"currency",currency:"EUR"});
+console.log(euro.format(10));
