@@ -730,7 +730,7 @@ class AritmeticError extends Error {
     }
 
     get name(){
-        return "Error, no se puede convertir valor booleano a numero";
+        return "Error, no se puede convertir cadena a numero";
     }
 }
 let error2 = new AritmeticError(2,"Error en operaciòn matematica");
@@ -759,3 +759,32 @@ let error3 = new ParamError(4,"Error de parametros invalidos", "cedula");
 console.log(error3.codigo);
 console.log(error3.message);
 console.log(error3.name);
+
+function validateCedula(cedula){
+    if(cedula == ""){
+        throw new ParamError(2,"Error de parametros invalidos", "cedula");
+    }
+}
+try {
+    validateCedula("");
+} catch (error) {
+    console.error(error.name);
+    console.error(error.message);
+    console.error(error.stack);
+}
+
+function validateNumero(cadena){
+    if(isNaN(cadena)){
+        console.log("entra");
+        throw new AritmeticError(3,"Error de conversiòn de campo numerico");
+    }
+    console.log("Valor correcto");
+}
+try {
+    validateNumero("hola");
+} catch (error1) {
+    console.error(error1.name);
+    console.error(error1.message);
+    console.error(error1.stack);
+}
+
