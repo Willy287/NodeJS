@@ -636,7 +636,7 @@ console.log("Fecha Actual: " + dateActual.toLocaleDateString());
 
 let milisecondsDay = 24 * 60 * 60 * 1000;
 console.log("Miliseconds for Day: " + milisecondsDay);
-let milisecondsElapsed = Math.abs(dateBirth- dateActual);
+let milisecondsElapsed = Math.abs(dateBirth - dateActual);
 console.log("Diference in miliseconds: " + milisecondsElapsed);
 let daysElapsed = Math.round(milisecondsElapsed / milisecondsDay);
 console.log("Days Elapsed: " + daysElapsed);
@@ -651,3 +651,111 @@ if(dateActual < dateBirth){
     --yearsWilmer;
 }
 console.log("Years Wilmer: " + yearsWilmer);
+
+/**
+ * Ejercicio 5 Librerias JavaScript: Date and Time
+ * 
+ */
+ function agregarMinutoFecha(fecha, minuto) {
+    //now4.setTime(now4.getTime()+30000);
+    fecha.setTime(fecha.getTime() + minuto * 60000);
+    return fecha.toLocaleString();
+}
+let now4 = new Date();
+let fecha2 = new Date(2021, 2, 12, 11, 40);
+console.log(fecha2);
+console.log(agregarMinutoFecha(now4, 20));
+/**
+ * Funcion que da un saludo al usuario nombre, dependiendo del parametro de fecha
+ * @param {*} fecha2 fecha para el saludo
+ * @param {*} nombre nombre del usuario
+ * @returns saludo
+ */
+function saludo(fecha2, nombre) {
+    let greeting = "";
+    let greeting2 = "";
+    if (fecha2.toLocaleTimeString('es-CO').match(/p.\sm/gi) == null) {
+        greeting = "Buenas días";
+    } else if (fecha2.toLocaleTimeString('es-CO', { hour12: false }).match(/\d{2}/)[0] < 18) {
+        greeting = "Buenas tardes";
+    } else {
+        greeting = "Buenas noches";
+    }
+    greeting2 =
+        fecha2.toLocaleString('es-CO', {
+            weekday: "long", day: "numeric", month: "long", year: "numeric"
+        }) +
+        " y son las " + fecha2.getHours() + " horas y " + fecha2.getMinutes() + " minutos";
+    return `${greeting}, ${nombre}. Hoy es ${greeting2} de ${greeting.match(/(?<=Buenas\s)\w*[^s]/)}`;
+}
+console.log(saludo(new Date(2021,2,2,19,23), "Wilman"));
+
+/**
+ * Excepciones en javascript
+ * Los objetos error tienen dos propiedades, mensaje y el nombre
+ * Se pueden definir las propias subclases de error
+ * Siempre manejar las excepciones con trhow
+ *
+ */
+class HTTPError extends Error {
+    constructor(status,statusText,url){
+        super(`${status} ${statusText}: ${url}`);
+        this.status = status;
+        this.statusText = statusText;
+        this.url = url;
+    }
+
+    get name(){
+        return "HTTPError";
+
+    }
+}
+
+let error = new HTTPError(404,"Not Found", "http://example.com/");
+console.log(error.status);
+console.log(error.message);
+console.log(error.name);
+
+
+/**
+ * Subclases de error propias: AritmeticError
+ * 
+ */
+class AritmeticError extends Error {
+    constructor(codigo, descripcion){
+        super(`${codigo} ${descripcion}`);
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+
+    }
+
+    get name(){
+        return "Error, no se puede convertir valor booleano a numero";
+    }
+}
+let error2 = new AritmeticError(2,"Error en operaciòn matematica");
+console.log(error2.codigo);
+console.log(error2.message);
+console.log(error2.name);
+
+
+/**
+ * Subclases de error propias: AritmeticError
+ * 
+ */
+class ParamError extends Error {
+    constructor(codigo, descripcion, parametro){
+        super(`${codigo} ${descripcion} ${parametro}`);
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.parametro = parametro;
+    }
+
+    get name(){
+        return `EL parametro ${this.parametro} no puede estar vacio ni nulo`;
+    }
+}
+let error3 = new ParamError(4,"Error de parametros invalidos", "cedula");
+console.log(error3.codigo);
+console.log(error3.message);
+console.log(error3.name);
