@@ -801,7 +801,7 @@ try {
 
 let object = {s:"",n:0,a:[true,false,null]};
 let serialization = JSON.stringify(object);
-let deserialization = JSON.parseInt(serialization);
+let deserialization = JSON.parse(serialization);
 console.log("Objeto serializado: " + serialization);
 console.log("Objeto deserializado" + deserialization);
 
@@ -810,7 +810,155 @@ console.log("Objeto deserializado" + deserialization);
 
  /**
 *Api de internacionalización: nos permite formatear numeros, que se muestren como formato de moneda, formato de porcentajes
-, ect
+, ect. También tiene un dateFormat
 */
-let euro = Intl.NumberFormat("es",{style:"currency",currency:"EUR"});
+let euro = Intl.NumberFormat("es",{style:"currency",currency:"COP"});
 console.log(euro.format(10));
+
+let data = [0.05,0.75,1];
+let formatData = Intl.NumberFormat(undefined,{style:"percent",minimumFractionDigits:1,maximumFractionDigits:1}).format;
+console.log(data.map(formatData));
+
+//Numeros en arabe
+let arabic = Intl.NumberFormat("ar",{useGrouping:false}).format;
+console.log(arabic(12345678910));
+
+//Numeros Indios
+let indi = Intl.NumberFormat("hi-IN-u-nu-deva").format;
+console.log(indi(12345678910));
+
+let date = new Date("2021-03-16T08:54:15Z");
+console.log(date);
+console.log(Intl.DateTimeFormat("en-US").format(date));
+
+//Fecha Francia
+console.log(Intl.DateTimeFormat("fr-FR").format(date));
+
+//Fecha España
+console.log(Intl.DateTimeFormat("es-ES").format(date));
+
+//Deletrear dia de la semana y mes
+let opts = {weekday:"long",month:"long",year:"numeric",day:"numeric"};
+console.log(Intl.DateTimeFormat("en-US",opts).format(date));
+
+//Digitos de los minutos
+opts = {hour:"numeric", minute:"2-digit", hour12:true, hourCycle:"h24"};
+console.log(Intl.DateTimeFormat("en-US",opts).format(date));
+
+//Calendarios no cristianos
+console.log(Intl.DateTimeFormat("en-u-ca-hebrew",opts).format(date));
+
+let opts2 = {year:"numeric",era:"narrow"}; 
+
+console.log(Intl.DateTimeFormat("en-u-ca-hebrew",opts2).format(date));
+
+//Budista
+console.log(Intl.DateTimeFormat("en-u-ca-buddhist",opts2).format(date));
+
+//Chino
+console.log(Intl.DateTimeFormat("en-u-ca-chinese",opts2).format(date));
+
+//Persa
+console.log(Intl.DateTimeFormat("en-u-ca-persian",opts2).format(date));
+
+/**
+ * h11: Media noche 0 y 11 de la noche 11PM
+ * h12: Media noche 12
+ * h23: Media noche 0 y 11 serian las 23PM
+ * h24: Media noche 24
+ * 
+ */
+
+ /**
+  * API DE URL: Se utiliza una clase que divide en partes una URL
+  */
+ let url2 = new URL("https://example.com:8000/path/name?q=term#fragment");
+console.log(url2.href);
+console.log(url2.origin);
+console.log(url2.protocol);
+console.log(url2.host);
+console.log(url2.hostname);
+console.log(url2.port);
+console.log(url2.pathname);
+console.log(url2.search);
+console.log(url2.hash);
+
+let url3 = new URL("ftp://admin:1337!@ftp.example.com/");
+console.log(url3.username);
+console.log(url3.password);
+console.log(url3.protocol);
+
+let url4 = new URL("https://example.com");
+console.log(url4.pathname="api/search");
+console.log(url4.search="q=test");
+console.log(url4.toString());
+
+
+let url5 = new URL("https://example.com/search");
+console.log(url5.search);
+console.log(url5.searchParams.append("q","test"));
+console.log(url5.search);
+url5.searchParams.set("q","x");
+console.log(url5.search);
+console.log(url5.searchParams.get("q"));
+console.log(url5.searchParams.has("q"));
+url5.searchParams.append("others","w");
+console.log(url5.search);
+url5.searchParams.append("others","s");
+console.log(url5.search);
+console.log(url5.searchParams.getAll("others"));
+console.log(url5.searchParams.sort());
+console.log(url5.search);
+console.log([...url5.searchParams]);
+url5.searchParams.delete("others");
+console.log(url5.search);
+
+
+/**
+ *  TIMERS DE JavaScript: Son funciones callback que solicitan al navegador que invoque cierto codigo después de 
+ * un determinado periodo de tiempo.
+ * Funciona en todos los navegadores.
+ */
+setTimeout(()=>{
+    console.log("Ready...");
+}, 1000);
+
+setTimeout(()=>{
+    console.log("Set...");
+}, 2000);
+
+setTimeout(()=>{
+    console.log("Go...");
+}, 3000);
+
+//SetInterval: Se utiliza para ejecutar el comportamiento de un reloj
+
+let clock = setInterval(()=>{
+    console.clear();
+    console.log(new Date().toLocaleTimeString());
+}, 1000);
+
+setTimeout(() => {
+    clearInterval(clock);
+}, 10000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
