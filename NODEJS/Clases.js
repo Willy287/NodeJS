@@ -108,7 +108,7 @@ Edad.prototype = {
 };
 
 let edad = new Edad("Wilmer", "Gonzalez", "04-07-1992");
-console.log(edad.getEdad());
+console.log("Edad utilizando la forma antigua: " + edad.getEdad());
 
 
 //Forma Actual de crear clases
@@ -126,7 +126,7 @@ class Person {
 }
 
 let person = new Person("Wilmer", "Gonzalez", "04-07-1992");
-console.log(person.getAge());
+console.log("Edad utilizando la forma nueva: " + person.getAge());
 
 //Función como expresión
 let age = function (birthday) {
@@ -150,5 +150,5 @@ let ageWilmer = class {
         return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
 }
-console.log(new ageWilmer("Wilmer", "Gonzalez", "04-07-1992").getAge());
+console.log("Edad utilizando función como expresión: " + new ageWilmer("Wilmer", "Gonzalez", "04-07-1992").getAge());
 
