@@ -152,3 +152,26 @@ let ageWilmer = class {
 }
 console.log("Edad utilizando función como expresión: " + new ageWilmer("Wilmer", "Gonzalez", "04-07-1992").getAge());
 
+class Cuadrado {
+    static calcularCuadrado(num){
+        return num * num;
+    }
+    static texto = "Hola";
+    #propiedadPrivada = 0;
+    metodoAbstracto(){
+        throw new Error("Metodo Abstracto");
+    }
+}
+
+let cuadrado2 = Cuadrado.calcularCuadrado(7);
+let cuadrado3 = Cuadrado.texto;
+
+console.log(cuadrado3);
+
+let cuadrado4 = new Cuadrado();
+console.log(cuadrado4.propiedadPrivada);
+
+
+
+
+
