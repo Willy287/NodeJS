@@ -10,4 +10,5 @@ function slowAlert() {
 
 function clearAlert() {
   window.clearTimeout(timeoutID);
+  alert("Se ha detenido el timer");
 }
