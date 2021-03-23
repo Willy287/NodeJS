@@ -19,7 +19,7 @@ console.log(strftime('%B %d, %Y %H:%M:%S'));
  * 2 tarea
  * 
  */
-var nameToSearch = "hola";
+let nameToSearch = "archivo";
 
 
 function searchWords(){
