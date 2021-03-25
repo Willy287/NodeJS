@@ -19,55 +19,54 @@ console.log(strftime('%B %d, %Y %H:%M:%S'));
  * 2 tarea
  * 
  */
-let nameToSearch = "correr";
+let nameToSearch = "carro";
 
 
-function searchWords(){
+function searchWords() {
 
-let nameLine = require('line-by-line');
-let lrName = new nameLine('./Archivito.txt');
+    let nameLine = require('line-by-line');
+    let lrName = new nameLine('./Archivito.txt');
 
-/**
- * Primera Forma
- */
- lrName.on('line', function (lineInNameFile) {
-     //Forma 1
-    FileSearch(nameToSearch);
-    //Forma 2
-    FileSearch2(nameToSearch);
- });     
-
+    /**
+     * Primera Forma
+     */
+    lrName.on('line', function (lineInNameFile) {
+        //Forma 1
+        FileSearch(nameToSearch);
+        //Forma 2
+        FileSearch2(nameToSearch);
+    });
 
 }
 
 
-let  FileSearch = function (searchString){
+let FileSearch = function (searchString) {
 
     let LineByLineReader = require('line-by-line'),
-    lr = new LineByLineReader('./Archivito.txt');
+        lr = new LineByLineReader('./Archivito.txt');
 
     lr.on('line', function (lineInListFile) {
         let arreglo = lineInListFile.split(nameToSearch);
-        console.log(`Forma 1 Palabra encontrada ${arreglo.length-1} veces`);
-     });
+        console.log(`Forma 1 Palabra encontrada ${arreglo.length - 1} veces`);
+    });
 
-} 
+}
 
-let FileSearch2 = function (searchString){
+let FileSearch2 = function (searchString) {
 
     let LineByLineReader = require('line-by-line'),
-    lr = new LineByLineReader('./Archivito.txt');
+        lr = new LineByLineReader('./Archivito.txt');
     let count = 0;
 
     lr.on('line', function (lineInListFile) {
         let arreglo = lineInListFile.split(' ');
-        arreglo.forEach(function(palabra, index){
-            if(palabra === nameToSearch){
+        arreglo.forEach(function (palabra, index) {
+            if (palabra === nameToSearch) {
                 count++;
             }
         });
         console.log(`Forma 2 Palabra encontrada ${count} veces`);
-     });
+    });
 
 };
 
